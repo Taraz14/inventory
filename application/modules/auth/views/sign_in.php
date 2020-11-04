@@ -36,7 +36,6 @@
         <?= $this->session->flashdata('message'); ?>
       </div>
       <?php } ?>
-
       <?= form_open((!empty($r_dr)) ? 'auth?r_dr='.rawurlencode($r_dr) : ''); ?>
       <?= form_error('username', '<small class="text-danger">','</small>'); ?>
         <div class="input-group mb-3">

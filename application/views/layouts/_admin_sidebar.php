@@ -26,8 +26,8 @@
         <ul class="nav nav-pills nav-sidebar flex-column nav-legacy nav-child-indent" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-            <li class="nav-header">Menu Utama</li>
-            <li class="nav-item">
+          <li class="nav-header">Menu Utama</li>
+          <li class="nav-item">
             <a href="<?= site_url('0/dashboard');?>" class="nav-link <?= $sessi == 'dashboard' ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
@@ -35,29 +35,16 @@
               </p>
             </a>
           </li>
-          <li class="nav-item <?= $sessi == 'alumni' ? 'menu-open' : ''; ?>">
-            <a href="#" class="nav-link <?= $sessi == 'alumni' ? 'active' : ''; ?>">
+
+          <li class="nav-item">
+            <a href="<?= site_url('0/alumni');?>" class="nav-link <?= ($sessi == 'alumni') || ($sessi == 'inputAlumni') ? 'active' : ''; ?>">
               <i class="nav-icon fas fa-users"></i>
               <p>
                 Data Alumni
-                <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="<?= site_url('0/alumni')?>" class="nav-link <?= $sessi == 'alumni' ? 'active' : ''; ?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Input Alumni</p>
-                </a>
-              </li>
-              <li class="nav-item">
-              <a href="<?= site_url('0/data-alumni')?>" class="nav-link <?= $sessi == 'data-alumni' ? 'active' : ''; ?>">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Data Alumni</p>
-                </a>
-              </li>
-            </ul>
           </li>
+          
           <li class="nav-item">
             <a href="#" class="nav-link">
               <i class="nav-icon fas fa-th"></i>

@@ -6,16 +6,17 @@ class Dashboard extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
+        $this->isAdmin();
         $this->load->model('dashboard_model', 'dashboard');
     }
     
     public function index()
     {
-        $this->isAdmin();
         // $analityc         = $this->dashboard->countStatusTransaction();
         $data['content']  = 'dashboard/admin/dashboard';
         $data['active']   = 'dashboard';
         $data['title']    = 'ALUMNI SD 1 - Admin';
+        $data['head']       = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
         // $data['product']  = $this->dashboard->countProduct();
         // $data['customer'] = $this->dashboard->countCustomer();

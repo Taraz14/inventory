@@ -5,12 +5,16 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1 class="m-0 text-dark"><?= $breadcrumb;?></h1>
+            <h1 class="m-0 text-dark"><?= $head;?></h1>
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= site_url('0/dashboard')?>">Beranda</a></li>
-              <li class="breadcrumb-item active"><?= $breadcrumb;?></li>
+              <li class="breadcrumb-item"><a href="<?= site_url('0/dashboard')?>">Dashboard</a></li>
+              <?php if($this->uri->segment(2) == 'dashboard') { 
+                echo '';
+               }else{ ?>
+                  <li class="breadcrumb-item active"><?= $breadcrumb;?></li>
+                <?php } ?>
             </ol>
           </div><!-- /.col -->
         </div><!-- /.row -->
