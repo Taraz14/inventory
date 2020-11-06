@@ -3,6 +3,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Alumni extends CI_Controller {
 
+    const ALUMNI = 2;
     
     public function __construct()
     {
@@ -54,10 +55,11 @@ class Alumni extends CI_Controller {
             "genderId"      => $this->input->post('userGender'),
             "userNisn"      => $this->input->post('userNisn'),
             "userName"      => $this->input->post('userName'),
-            "userLastName"      => $this->input->post('userLastName'),
+            "userLastName"  => $this->input->post('userLastName'),
             "userUsername"  => $this->input->post('userNisn'),
             "userPassword"  => password_hash($this->input->post('userNisn'), PASSWORD_DEFAULT),
             "userPhone"     => $this->input->post('userPhone'),
+            "userEmail"     => $this->input->post('userEmail'),
             "userAddress"    => $this->input->post('userAlamat'),
             "userBirthPlace"=> $this->input->post('userBP'),
             "userBirthDate" => $userDateB,
@@ -67,8 +69,19 @@ class Alumni extends CI_Controller {
             "updateAt"      => time(),
         ];
         // var_dump($data['userYears']);die();
-        if(!$this->dashboard->set($data)){
+        $userId = $this->dashboard->set($data);
+        // echo $userId;die();
+        if(!$userId){
             return direct("0/alumni", "Gagal Menambahkan");
+        }
+
+        $role = [
+            "userId" => $this->db->insert_id(),
+            "roleId" => Alumni::ALUMNI
+        ];
+
+        if ( !$this->dashboard->setRole($role)) {
+            return direct("0/alumni", "Gagal mendaftar akun.");
         }
 
         return direct("0/alumni", "Berhasil Ditambahkan");
@@ -135,6 +148,7 @@ class Alumni extends CI_Controller {
             "userName"      => $this->input->post('userName'),
             "userLastName"      => $this->input->post('userLastName'),
             "userPhone"     => $this->input->post('userPhone'),
+            "userEmail"     => $this->input->post('userEmail'),
             "userAddress"    => $this->input->post('userAlamat'),
             "userBirthPlace"=> $this->input->post('userBP'),
             "userBirthDate" => $userDateB,

@@ -28,16 +28,17 @@
     <!-- /.card-header -->
     <div class="card-body">
         <div class="table-responsive">
-            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+            <table class="table table-bordered nowrap" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
-                        <th width="">No.</th>
+                        <th width="2%">No.</th>
                         <th width="">Nama</th>
                         <th width="">NISN</th>
                         <th width="">TTL</th>
-                        <th width="">Gender</th>
-                        <th width="">Alamat</th>
+                        <th width="5%">Gender</th>
+                        <th width="20%">Alamat</th>
                         <th width="">No.Hp</th>
+                        <th width="">Email</th>
                         <th width="">Tahun Lulus</th>
                         <th width="">Aksi</th>
                     </tr>
@@ -53,11 +54,13 @@
                             <td><?= $val->genderName; ?></td>
                             <td><?= $val->userAddress; ?></td>
                             <td><?= $val->userPhone; ?></td>
+                            <td><?= $val->userEmail; ?></td>
                             <td><?= $val->userYears == NULL ? "-" : date("M-Y", strtotime($val->userYears)); ?></td>
                             <td>
                                 <button type="button" id="<?= $val->userId?>" class="btn btn-sm btn-default text-red deleteBtn"><i class="fa fa-trash"></i></button>
                                 <a href="<?= site_url('0/update-alumni/'.$val->userId)?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-pen"></i></a>
                                 <a href="https://wa.me/62<?= $val->userPhone?>?text=Username%20Anda%20:%20<?= $val->userNisn?>%0aPassword%20Anda%20:%20<?= $val->userNisn?>%0a%0aSD%201%20Kota%20Sorong%0ahttp://localhost/inventory/0/alumni" class="btn btn-sm btn-default text-success" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                                <a href="<?= site_url('0/send-email')?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-envelope"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>
@@ -71,7 +74,9 @@
 <script>
     window.onload = () => {
         var siteUrl = "<?= site_url() ?>";
-        $('#dataTable').DataTable();
+        $('#dataTable').DataTable({
+            "scrollX" : true
+        });
         
         $(document).on('click', '.deleteBtn', function(e){
             e.preventDefault();

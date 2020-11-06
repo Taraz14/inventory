@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="main-header navbar navbar-expand navbar-dark navbar-cyan">
+<nav class="main-header navbar navbar-expand navbar-dark <?= ($this->session->roleName == "Admin") ? "navbar-cyan" : "navbar-gray-dark"; ?>">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
       <li class="nav-item">

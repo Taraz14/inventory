@@ -40,7 +40,7 @@ $config['register'] = [
     [
         'field'  => 'userNisn',
         'label'  => 'NISN',
-        'rules'  => 'trim|required',
+        'rules'  => 'trim|required|is_unique[user.userNisn]',
         'errors' => [
             'required'   => '* %s tidak boleh kosong'
         ]
@@ -50,7 +50,8 @@ $config['register'] = [
         'label'  => 'Tempat Lahir',
         'rules'  => 'trim|required',
         'errors' => [
-            'required'   => '* %s tidak boleh kosong'
+            'required'   => '* %s tidak boleh kosong',
+            'is_unique' => '* %s sudah terdaftar.'
         ]
     ],
     [

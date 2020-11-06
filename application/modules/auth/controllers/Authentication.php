@@ -35,13 +35,13 @@ class Authentication extends CI_Controller {
     {
         if($this->session->isLoggin) {
             switch (strtolower($this->session->roleName)) {
-                case 'admin':
+                case 'Admin':
                     if(!empty($r_dr)) {
                         redirect($r_dr,'refresh');
                     }
                     redirect('0/dashboard','refresh');
                     break;
-                 case 'alumni':
+                 case 'Alumni':
                     if(!empty($r_dr)) {
                         redirect($r_dr,'refresh');
                     }

@@ -9,7 +9,14 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="<?= site_url('0/dashboard')?>">Dashboard</a></li>
+              <?php
+                if($this->session->roleName == "Admin"){
+                  $link = site_url('0/dashboard');
+                }else{
+                  $link = site_url('1/dashboard');
+                }
+              ?>
+              <li class="breadcrumb-item"><a href="<?= $link; ?>">Dashboard</a></li>
               <?php if($this->uri->segment(2) == 'dashboard') { 
                 echo '';
                }else{ ?>

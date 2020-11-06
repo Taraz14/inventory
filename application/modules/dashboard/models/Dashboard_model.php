@@ -13,6 +13,11 @@ class Dashboard_model extends CI_Model {
         return $this->db->insert('user', $data);
     }
 
+    public function setRole($data){
+        return $this->db->insert('userrole', $data);
+        // return $this->db->insert_id(); 
+    }
+
     public function get($limit = false){
         $this->db->select('*');
         $this->db->from('user u');
@@ -35,18 +40,6 @@ class Dashboard_model extends CI_Model {
             ->get();
     }
 
-    // public function find($params)
-    // {
-    //     return $this->db
-    //         ->select("u.*, r.roleName")
-    //         ->from("userRole ur")
-    //         ->join("role r", "ur.roleId = r.roleId", "inner")
-    //         ->join("user u", "ur.userId = u.userId", "inner")
-    //         ->where($params)
-    //         ->limit(1)
-    //         ->get();
-    // }
-
     public function getAlumni(){
         $limit = !empty($this->input->get('limit')) ? $this->input->get('limit') : 9;
         $order = !empty($this->input->get('orderBy')) ? $this->input->get('orderBy') : 'userYears';
@@ -65,7 +58,9 @@ class Dashboard_model extends CI_Model {
 
     public function delete($params)
     {
-        return $this->db->delete('user', $params);
+        $del_user = $this->db->delete('user', $params);
+        $del_role = $this->db->delete('userrole', $params);
+        return array($del_user, $del_role);
     }
 }
 

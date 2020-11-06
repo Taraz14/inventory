@@ -76,6 +76,13 @@
         </div>
 
         <div class="form-group row">
+          <label for="userEmail" class="col-sm-2 col-form-label">Email</label>
+          <div class="col-sm-10">
+            <input type="text" class="form-control" name="userEmail" id="userEmail" placeholder="contoh@gmail.com" value="<?= $user->userEmail; ?>">
+          </div>
+        </div>
+
+        <div class="form-group row">
           <label for="userPhone" class="col-sm-2 col-form-label">No. Telp</label>
           <div class="col-sm-10">
             <input type="text" class="form-control" name="userPhone" id="userPhone" value="<?= $user->userPhone; ?>">

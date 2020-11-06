@@ -24,13 +24,13 @@
 <body class="hold-transition login-page">
 <div class="login-box">
   <!-- /.login-logo -->
-  <div class="card card-outline card-primary">
+  <div class="card card-outline card-purple">
     
     <div class="card-header text-center">
       <a href="<?= site_url();?>" class="h1"><img src="<?= base_url('assets/dist/img/logo.png')?>" style="width:35%"></a>
     </div>
     <div class="card-body">
-      <p class="login-box-msg">SD 1 Kota Sorong</p>
+      <!-- <p class="login-box-msg">SD 1 Kota Sorong</p> -->
       <?php if(!empty($this->session->flashdata('message'))) { ?>
       <div class="text-sm text-center" style="color:red">
         <?= $this->session->flashdata('message'); ?>
@@ -57,8 +57,8 @@
         </div>
         <div class="row">
           <!-- /.col -->
-          <div class="col-4">
-            <button type="submit" class="btn btn-primary btn-block">Sign In</button>
+          <div class="col-12">
+            <button type="submit" class="btn btn-outline-primary btn-block">Masuk</button>
           </div>
           <!-- /.col -->
         </div>
