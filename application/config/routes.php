@@ -11,10 +11,15 @@ $route['0/alumni'] = 'dashboard/Alumni';
 $route['0/inputAlumni'] = 'dashboard/Alumni/create';
 $route['0/update-alumni/(:any)'] = 'dashboard/Alumni/update/$1';
 $route['0/delete-alumni/(:any)'] = 'dashboard/Alumni/deleteAlumni/$1';
-$route['0/send-email'] = 'dashboard/Email/send';
 
 //dashboard admin
 $route['0/dashboard'] = 'dashboard/Dashboard';
+$route['0/email/(:any)'] = 'dashboard/Email/index/$1';
+$route['0/send-email'] = 'dashboard/Email/send';
+
+//profile Admin
+$route['0/profile'] = 'dashboard/Profile';
+$route['0/update-profile'] = 'dashboard/Profile/resetPassword';
 
 //dashboard alumni
 $route['1/dashboard'] = 'alumni/Alumni';

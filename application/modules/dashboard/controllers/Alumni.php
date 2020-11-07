@@ -14,11 +14,13 @@ class Alumni extends CI_Controller {
     }
     
     public function index(){
+        $userData = $this->session->userdata();
         $data['content']  = 'dashboard/admin/alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Alumni';
         $data['breadcrumb'] = 'Alumni';
+        $data['userData']    = $userData;
         $data['alumni']     = $this->dashboard->get();
         $this->load->view("layouts/wrapper", $data);
     }
@@ -37,11 +39,13 @@ class Alumni extends CI_Controller {
     }
 
     public function inputAlumni(){
+        $userData = $this->session->userdata();
         $data['content']  = 'dashboard/admin/input_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Input Alumni';
         $data['breadcrumb'] = '<a href="'.site_url("0/alumni").'">Alumni</a> <li class="breadcrumb-item active"> Input Alumni</li>';
+        $data['userData']  = $userData;
         $data['gender']     = $this->dashboard->getGender();
         $this->load->view("layouts/wrapper", $data);
     }
@@ -125,12 +129,15 @@ class Alumni extends CI_Controller {
     }
 
     private function pageUpdate($user){
+        $userData = $this->session->userdata();
+        
         $data['content']  = 'dashboard/admin/update_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Edit Alumni';
         $data['breadcrumb'] = '<a href="'.site_url("0/alumni").'">Alumni</a> <li class="breadcrumb-item active"> Edit Alumni</li>';
         $data['user']       = $user;
+        $data['userData']       = $userData;
         $data['gender']     = $this->dashboard->getGender();
         $this->load->view("layouts/wrapper", $data);
     }

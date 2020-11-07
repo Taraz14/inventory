@@ -30,6 +30,8 @@
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- Summernote -->
+    <script src="<?= base_url()?>assets/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- AdminLTE App -->
     <script src="<?= base_url()?>assets/dist/js/adminlte.min.js"></script>
     <script>
@@ -46,5 +48,6 @@
             toastr.warning('Lorem ipsum dolor sit amet, consetetur sadipscing elitr.')
         });
     </script>
+    
 </body>
 </html>

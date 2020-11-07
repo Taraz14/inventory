@@ -62,15 +62,6 @@ $config['register'] = [
             'required'   => '* %s tidak boleh kosong'
         ]
     ],
-    // [
-    //     'field'  => 'userUsername',
-    //     'label'  => 'Username',
-    //     'rules'  => 'trim|required|is_unique[user.userUsername]',
-    //     'errors' => [
-    //         'required'  => '* %s tidak boleh kosong',
-    //         'is_unique' => '* %s sudah digunakan.',
-    //     ]
-    // ],
     [
         'field'  => 'userGender',
         'label'  => 'Jenis Kelamin',

@@ -112,7 +112,7 @@ class Authentication extends CI_Controller {
                 "id"       => $account->userId,
                 "gender"   => $account->genderId,
                 "username" => $account->userUsername,
-                // "email"    => $account->userEmail,
+                "email"    => $account->userEmail,
                 "photo"    => $account->userImage,
                 "name"     => $account->userName,
                 "address"  => $account->userAddress,
@@ -120,7 +120,7 @@ class Authentication extends CI_Controller {
                 "roleName" => $account->roleName,
                 "isLoggin" => true
             ];
-            
+            // var_dump($sessi);die();
             $this->session->set_userdata($sessi);
             return true;
         }

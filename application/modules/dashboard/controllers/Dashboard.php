@@ -12,15 +12,13 @@ class Dashboard extends CI_Controller {
     
     public function index()
     {
-        // $analityc         = $this->dashboard->countStatusTransaction();
+        $userData = $this->session->userdata();
         $data['content']  = 'dashboard/admin/dashboard';
         $data['active']   = 'dashboard';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
-        // $data['product']  = $this->dashboard->countProduct();
-        // $data['customer'] = $this->dashboard->countCustomer();
-        // $data['analityc'] = $analityc;
+        $data['userData']    = $userData;
         $this->load->view("layouts/wrapper", $data);
     }
 

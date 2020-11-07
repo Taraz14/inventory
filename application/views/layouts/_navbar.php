@@ -1,3 +1,6 @@
+<?php
+  $sesi = $this->uri->segment(2);
+?>
 <!-- Navbar -->
 <nav class="main-header navbar navbar-expand navbar-dark <?= ($this->session->roleName == "Admin") ? "navbar-cyan" : "navbar-gray-dark"; ?>">
     <!-- Left navbar links -->
@@ -6,7 +9,7 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="index3.html" class="nav-link">Profile</a>
+        <a href="<?= site_url('0/profile');?>" class="nav-link <?= ($sesi == 'profile') || ($sesi == 'update-profile')  ? 'active' : ''?>">Profile</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
         <a href="#" class="nav-link">Contact</a>

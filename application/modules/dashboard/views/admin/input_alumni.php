@@ -114,9 +114,8 @@
       </div>
       <!-- /.card-body -->
       <div class="card-footer">
-        <button type="submit" class="btn btn-outline-success"><i class="fa fa-paper-plane"></i> Simpan</button>
-        <!-- <input type="reset" class="btn btn-outline-secondary float-right" id="reset" value="&#xf00d; Reset"> -->
-        <a href='<?= site_url('0/alumni')?>' class="btn btn-outline-danger float-right"><i class="fa fa-angle-left"></i> Kembali</a>
+        <a href='<?= site_url('0/alumni')?>' class="btn btn-outline-danger"><i class="fa fa-angle-left"></i> Kembali</a>
+        <button type="submit" class="btn btn-outline-success float-right"><i class="fa fa-paper-plane"></i> Simpan</button>
       </div>
       <!-- /.card-footer -->
     <?= form_close();?>

@@ -12,7 +12,7 @@
 
 <section class="content">
     <?php if(!empty($this->session->flashdata('message'))) { ?>
-      <div class="alert alert-success alert-dismissible fade show" role="alert">
+      <div class="alert alert-light alert-dismissible fade show" role="alert">
         <?= $this->session->flashdata('message'); ?>
         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
           <span aria-hidden="true">&times;</span>
@@ -60,7 +60,7 @@
                                 <button type="button" id="<?= $val->userId?>" class="btn btn-sm btn-default text-red deleteBtn"><i class="fa fa-trash"></i></button>
                                 <a href="<?= site_url('0/update-alumni/'.$val->userId)?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-pen"></i></a>
                                 <a href="https://wa.me/62<?= $val->userPhone?>?text=Username%20Anda%20:%20<?= $val->userNisn?>%0aPassword%20Anda%20:%20<?= $val->userNisn?>%0a%0aSD%201%20Kota%20Sorong%0ahttp://localhost/inventory/0/alumni" class="btn btn-sm btn-default text-success" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                                <a href="<?= site_url('0/send-email')?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-envelope"></i></a>
+                                <a href="<?= site_url('0/email/'.$val->userId)?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-envelope"></i></a>
                             </td>
                         </tr>
                     <?php endforeach; ?>

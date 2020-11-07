@@ -6,7 +6,7 @@ class Auth_model extends CI_Model {
     public function find($params)
     {
         return $this->db
-            ->select('u.*, r.roleId, r.roleName')
+            ->select('u.*, r.*')
             ->from("userRole ur")
             ->join("user u","u.userId = ur.userId", "inner")
             ->join("role r","r.roleId = ur.roleId", "inner")
