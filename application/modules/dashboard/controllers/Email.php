@@ -20,7 +20,7 @@ class Email extends CI_Controller {
     if($userId->num_rows() !== 1){
       return direct("0/alumni", "<div style='color:red'>Data tidak ditemukan</div>");
     }
-    $data['content']  = 'dashboard/admin/kirim_email';
+    $data['content']  = 'dashboard/kirim_email';
     $data['active']   = 'email';
     $data['title']    = 'ALUMNI SD 1 - Admin';
     $data['subheading'] ='ALUMNI SD 1';

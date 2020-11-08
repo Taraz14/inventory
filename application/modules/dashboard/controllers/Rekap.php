@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller {
+class Rekap extends CI_Controller {
 
     public function __construct()
     {
@@ -9,17 +9,19 @@ class Dashboard extends CI_Controller {
         $this->isAdmin();
         $this->load->model('dashboard_model', 'dashboard');
     }
-    
+
     public function index()
     {
         $userData = $this->session->userdata();
-        $data['content']  = 'dashboard/dashboard';
-        $data['active']   = 'dashboard';
-        $data['title']    = 'ALUMNI SD 1 - Admin';
-        $data['head']       = 'Dashboard';
-        $data['breadcrumb'] = 'Dashboard';
-        $data['userData']    = $userData;
-        $this->load->view("layouts/wrapper", $data);
+        $this->load->view('layouts/wrapper', [
+            'content' => 'dashboard/rekap_alumni',
+            'active' => 'Rekap',
+            'title' => 'ALUMNI SD 1 - Admin',
+            'head' => 'Rekap Data',
+            'breadcrumb' => 'Rekap Data',
+            'userData' => $userData
+        ]);
+        
     }
 
     private function isAdmin()
@@ -33,4 +35,4 @@ class Dashboard extends CI_Controller {
 
 }
 
-/* End of file Dashboard.php */
+/* End of file Rekap.php */

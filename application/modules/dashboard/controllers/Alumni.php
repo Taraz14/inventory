@@ -15,7 +15,7 @@ class Alumni extends CI_Controller {
     
     public function index(){
         $userData = $this->session->userdata();
-        $data['content']  = 'dashboard/admin/alumni';
+        $data['content']  = 'dashboard/alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Alumni';
@@ -40,7 +40,7 @@ class Alumni extends CI_Controller {
 
     public function inputAlumni(){
         $userData = $this->session->userdata();
-        $data['content']  = 'dashboard/admin/input_alumni';
+        $data['content']  = 'dashboard/input_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Input Alumni';
@@ -131,7 +131,7 @@ class Alumni extends CI_Controller {
     private function pageUpdate($user){
         $userData = $this->session->userdata();
         
-        $data['content']  = 'dashboard/admin/update_alumni';
+        $data['content']  = 'dashboard/update_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Edit Alumni';

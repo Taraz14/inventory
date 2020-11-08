@@ -19,7 +19,17 @@ $route['0/send-email'] = 'dashboard/Email/send';
 
 //profile Admin
 $route['0/profile'] = 'dashboard/Profile';
-$route['0/update-profile'] = 'dashboard/Profile/resetPassword';
+$route['0/update-profile'] = 'dashboard/Profile/update';
+
+//settings admin
+$route['0/pengaturan'] = 'dashboard/Settings';
+
+//rekap admin
+$route['0/rekap'] = 'dashboard/Rekap';
+
+//berita admin
+$route['0/berita'] = 'dashboard/Berita';
+
 
 //dashboard alumni
 $route['1/dashboard'] = 'alumni/Alumni';

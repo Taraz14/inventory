@@ -9,10 +9,10 @@
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('0/profile');?>" class="nav-link <?= ($sesi == 'profile') || ($sesi == 'update-profile')  ? 'active' : ''?>">Profile</a>
+        <a href="<?= site_url('0/profile');?>" class="nav-link <?= ($sesi == 'profile') || ($sesi == 'update-profile')  ? 'active' : ''?>"><i class="fa fa-user-alt"></i> Profile</a>
       </li>
       <li class="nav-item d-none d-sm-inline-block">
-        <a href="#" class="nav-link">Contact</a>
+        <a href="<?= site_url('0/pengaturan');?>" class="nav-link <?= ($sesi == 'pengaturan')  ? 'active' : ''?>"><i class="fa fa-cog"></i> Pengaturan</a>
       </li>
     </ul>
 

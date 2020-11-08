@@ -12,7 +12,7 @@
                        src="<?= base_url('assets/dist/img/'.$userData['photo'])?>"
                        alt="User profile picture" alt="User profile picture" onClick="triggerClick()" style="cursor:pointer" id="profileDisplay">
 
-                       <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" value="<?= $userData['photo']; ?>">
+                       <input type="file" name="profileImage" onChange="displayImage(this)" id="profileImage" class="form-control" style="display: none;" value="<?= $userData['photo']; ?>" accept="image/*">
                 </div>
 
                 <h3 class="profile-username text-center"><?= $userData['name']?></h3>
