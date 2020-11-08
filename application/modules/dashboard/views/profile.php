@@ -9,7 +9,7 @@
               <div class="card-body box-profile">
                 <div class="text-center">
                   <img class="profile-user-img img-fluid img-circle"
-                       src="<?= base_url('assets/dist/img/'.$userData['photo'])?>"
+                       src="<?= (empty($this->session->photo)) ? base_url('assets/dist/img/nophoto.png') : base_url($this->session->userdata('photo')); ?>"
                        alt="User profile picture">
                 </div>
 

@@ -8,6 +8,8 @@ class Profile extends CI_Controller {
         parent::__construct();
         $this->isAdmin();
         $this->load->model('dashboard_model', 'dashboard');
+        $this->load->model('profile_model', 'profile');
+        $this->load->helper('string');
     }
     
     private function isLoggin()
@@ -65,12 +67,12 @@ class Profile extends CI_Controller {
 
     private function uploadImage()
     {
-        $path = 'assets/img/customer/';
+        $path = 'assets/img/admin/';
         if (!file_exists($path)) {
             mkdir($path, 0777, true);
         }
 
-        $name         = "profile_".random_string('alnum', 8).":".microtime(true)."_".date("Ymd").".jpg";
+        $name         = "profile_".random_string('alnum', 8)."_".microtime(true)."_".date("Ymd").".jpg";
         $config['upload_path']   = FCPATH . $path;
         $config['allowed_types'] = "gif|jpg|png|jpeg";
         $config['file_name']     = $name;
@@ -108,7 +110,7 @@ class Profile extends CI_Controller {
         }
 
         if(!$this->profile->update($data, $params)) {
-            return direct("profile/update", "Gagal update profil");
+            return direct("0/update-profile", "Gagal update profil");
         }
 
         $this->session->unset_userdata('name');
@@ -122,7 +124,7 @@ class Profile extends CI_Controller {
 
         $this->updateSessi($data, $images);
 
-        return direct("profile", "Berhasil update profil");
+        return direct("0/profile", "Berhasil update profil");
     }
 
     private function updateSessi($data, $image)
