@@ -1,10 +1,11 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Alumni extends CI_Controller {
+class Alumni extends CI_Controller
+{
 
     const ALUMNI = 2;
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -12,8 +13,9 @@ class Alumni extends CI_Controller {
         $this->load->model('dashboard_model', 'dashboard');
         $this->load->helper('string');
     }
-    
-    public function index(){
+
+    public function index()
+    {
         $userData = $this->session->userdata();
         $data['content']  = 'dashboard/alumni';
         $data['active']   = 'alumni';
@@ -25,35 +27,38 @@ class Alumni extends CI_Controller {
         $this->load->view("layouts/wrapper", $data);
     }
 
-    public function create(){
+    public function create()
+    {
         $valid = $this->form_validation;
         $rules = $this->config;
 
         $valid->set_rules($rules->item('register'));
-        if(!$this->form_validation->run()){
+        if (!$this->form_validation->run()) {
             // echo validation_errors();
             return $this->inputAlumni();
-        }else{
+        } else {
             $this->actionCreate();
         }
     }
 
-    public function inputAlumni(){
+    public function inputAlumni()
+    {
         $userData = $this->session->userdata();
         $data['content']  = 'dashboard/input_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Input Alumni';
-        $data['breadcrumb'] = '<a href="'.site_url("0/alumni").'">Alumni</a> <li class="breadcrumb-item active"> Input Alumni</li>';
+        $data['breadcrumb'] = '<a href="' . site_url("0/alumni") . '">Alumni</a> <li class="breadcrumb-item active"> Input Alumni</li>';
         $data['userData']  = $userData;
         $data['gender']     = $this->dashboard->getGender();
         $this->load->view("layouts/wrapper", $data);
     }
 
 
-    private function actionCreate(){
+    private function actionCreate()
+    {
         $userDateB = explode('-', $this->input->post('userDateB'));
-        $userDateB = $userDateB[2].'-'.$userDateB[1].'-'.$userDateB[0];
+        $userDateB = $userDateB[2] . '-' . $userDateB[1] . '-' . $userDateB[0];
         // echo $userDateB;die();
         $tahun = explode(' ', $this->input->post('year'));
         $tahun = $tahun[1];
@@ -68,7 +73,7 @@ class Alumni extends CI_Controller {
             "userPhone"     => $this->input->post('userPhone'),
             "userEmail"     => $this->input->post('userEmail'),
             "userAddress"    => $this->input->post('userAlamat'),
-            "userBirthPlace"=> $this->input->post('userBP'),
+            "userBirthPlace" => $this->input->post('userBP'),
             "userBirthDate" => $userDateB,
             "userImage"     => 'assets/dist/img/nophoto.png',
             "userYears"     => $tahun,
@@ -78,7 +83,7 @@ class Alumni extends CI_Controller {
         // var_dump($data['userYears']);die();
         $userId = $this->dashboard->set($data);
         // echo $userId;die();
-        if(!$userId){
+        if (!$userId) {
             return direct("0/alumni", "Gagal Menambahkan");
         }
 
@@ -87,15 +92,16 @@ class Alumni extends CI_Controller {
             "roleId" => Alumni::ALUMNI
         ];
 
-        if ( !$this->dashboard->setRole($role)) {
+        if (!$this->dashboard->setRole($role)) {
             return direct("0/alumni", "Gagal mendaftar akun.");
         }
 
         return direct("0/alumni", "Berhasil Ditambahkan");
     }
 
-    public function deleteAlumni($id){
-        if(empty($id)){
+    public function deleteAlumni($id)
+    {
+        if (empty($id)) {
             return jsonOutput(["result" => "error", "message" => "Data tidak ditemukan"]);
         }
 
@@ -103,18 +109,18 @@ class Alumni extends CI_Controller {
             "userId" => $id
         ];
 
-        if(!$this->dashboard->delete($params)){
+        if (!$this->dashboard->delete($params)) {
             return jsonOutput(["result" => "error", "message" => "Gagal hapus alumni"]);
         }
 
         $this->session->set_flashdata("message", "Berhasil hapus alumni");
         return jsonOutput(["result" => "success", "message" => "Berhasil hapus alumni"]);
-
     }
 
-    public function update($id){
+    public function update($id)
+    {
         $user = $this->dashboard->findUser(["userId" => $id]);
-        if($user->num_rows() !== 1 ){
+        if ($user->num_rows() !== 1) {
             return direct("0/alumni", "Data tidak ditemukan");
         }
 
@@ -122,32 +128,33 @@ class Alumni extends CI_Controller {
         $rules = $this->config;
 
         $valid->set_rules($rules->item('update_alumni'));
-        if(!$valid->run()){
+        if (!$valid->run()) {
             // echo validation_errors();
             return $this->pageUpdate($user->row());
-
         }
 
         return $this->actionUpdate();
     }
 
-    private function pageUpdate($user){
+    private function pageUpdate($user)
+    {
         $userData = $this->session->userdata();
-        
+
         $data['content']  = 'dashboard/update_alumni';
         $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Admin';
         $data['head']       = 'Edit Alumni';
-        $data['breadcrumb'] = '<a href="'.site_url("0/alumni").'">Alumni</a> <li class="breadcrumb-item active"> Edit Alumni</li>';
+        $data['breadcrumb'] = '<a href="' . site_url("0/alumni") . '">Alumni</a> <li class="breadcrumb-item active"> Edit Alumni</li>';
         $data['user']       = $user;
         $data['userData']       = $userData;
         $data['gender']     = $this->dashboard->getGender();
         $this->load->view("layouts/wrapper", $data);
     }
 
-    public function actionUpdate(){
+    public function actionUpdate()
+    {
         $userDateB = explode('-', $this->input->post('userDateB'));
-        $userDateB = $userDateB[2].'-'.$userDateB[1].'-'.$userDateB[0];
+        $userDateB = $userDateB[2] . '-' . $userDateB[1] . '-' . $userDateB[0];
         $tahun = explode(' ', $this->input->post('year'));
         $tahun = $tahun[1];
         // echo $tahun;die();
@@ -163,28 +170,28 @@ class Alumni extends CI_Controller {
             "userPhone"     => $this->input->post('userPhone'),
             "userEmail"     => $this->input->post('userEmail'),
             "userAddress"    => $this->input->post('userAlamat'),
-            "userBirthPlace"=> $this->input->post('userBP'),
+            "userBirthPlace" => $this->input->post('userBP'),
             "userBirthDate" => $userDateB,
             "userYears"     => $tahun,
         ];
-        // var_dump($data);die();
-        if(!$this->dashboard->update($data, $params)){
-            return direct("0/update-alumni/".$params['userId'], "Data gagal diubah");
+        // var_dump($data);
+        // var_dump($params);
+        // die();
+        if (!$this->dashboard->update($data, $params)) {
+            return direct("0/update-alumni/" . $params['userId'], "Data gagal diubah");
         }
-
+        // $this->dashboard->update($data, $params);
         return direct("0/alumni", "Data Berhasil diubah");
     }
 
     private function isAdmin()
     {
-        if($this->session->isLoggin && $this->session->roleName == 'Admin') {
+        if ($this->session->isLoggin && $this->session->roleName == 'Admin') {
             return true;
         }
 
-        redirect('sign-out','refresh');
+        redirect('sign-out', 'refresh');
     }
-
-
 }
 
 /* End of file Alumni.php */

@@ -1,7 +1,8 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Profile_model extends CI_Model {
+class Profile_model extends CI_Model
+{
 
     public function update($data, $params)
     {
@@ -17,7 +18,6 @@ class Profile_model extends CI_Model {
             ->limit(1)
             ->get()->row();
     }
-
 }
 
 /* End of file Profile_model.php */

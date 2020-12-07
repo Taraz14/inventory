@@ -1,30 +1,35 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard_model extends CI_Model {
+class Dashboard_model extends CI_Model
+{
 
-    public function getGender(){
+    public function getGender()
+    {
         $this->db->select('*');
         $this->db->from('gender');
         return $this->db->get()->result();
     }
 
-    public function set($data){
+    public function set($data)
+    {
         return $this->db->insert('user', $data);
     }
 
-    public function setRole($data){
+    public function setRole($data)
+    {
         return $this->db->insert('userrole', $data);
         // return $this->db->insert_id(); 
     }
 
-    public function get($limit = false){
+    public function get($limit = false)
+    {
         $this->db->select('*');
         $this->db->from('user u');
         $this->db->join('gender g', 'g.genderId = u.genderId', 'inner');
         $this->db->where('userId != 1');
-        
-        if($limit){
+
+        if ($limit) {
             $this->db->limit(10);
         }
         return $this->db->get()->result();
@@ -40,12 +45,13 @@ class Dashboard_model extends CI_Model {
             ->get();
     }
 
-    public function getAlumni(){
+    public function getAlumni()
+    {
         $limit = !empty($this->input->get('limit')) ? $this->input->get('limit') : 9;
         $order = !empty($this->input->get('orderBy')) ? $this->input->get('orderBy') : 'userYears';
         $this->db->select('*');
         $this->db->from('user u');
-        $this->db->join('gender g', 'g.genderId = u.genderId', 'inner');   
+        $this->db->join('gender g', 'g.genderId = u.genderId', 'inner');
         $this->db->limit($limit);
         $this->db->order_by($order, 'asc');
         return $this->db->get()->result();
@@ -63,7 +69,8 @@ class Dashboard_model extends CI_Model {
         return array($del_user, $del_role);
     }
 
-    public function countAlumni(){
+    public function countAlumni()
+    {
         $this->db->select('*');
         $this->db->from('user u');
         $this->db->join('gender g', 'g.genderId = u.genderId', 'inner');
@@ -72,13 +79,15 @@ class Dashboard_model extends CI_Model {
         return $this->db->count_all_results();
     }
 
-    public function countGambar(){
+    public function countGambar()
+    {
         $this->db->select('*');
         $this->db->from('galeri');
         return $this->db->count_all_results();
     }
 
-    public function countBerita(){
+    public function countBerita()
+    {
         $this->db->select('*');
         $this->db->from('berita');
         return $this->db->count_all_results();
