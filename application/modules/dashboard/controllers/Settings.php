@@ -7,7 +7,9 @@ class Settings extends CI_Controller {
     {
         parent::__construct();
         $this->isAdmin();
-        $this->load->model('dashboard_model', 'dashboard');
+        $this->load->model('pengaturan_model', 'pengaturan');
+        $this->load->helper('string');
+        
     }
 
     public function index()
@@ -15,13 +17,56 @@ class Settings extends CI_Controller {
         $userData = $this->session->userdata();
         $this->load->view('layouts/wrapper', [
             'content' => 'dashboard/settings',
-            'active' => 'Pengaturan',
+            'active' => 'Pengaturan', 
             'title' => 'ALUMNI SD 1 - Admin',
             'head' => 'Pengaturan',
             'breadcrumb' => 'Pengaturan',
             'userData' => $userData
         ]);
         
+    }
+
+    public function email(){
+        $valid = $this->form_validation;
+        $rules = $this->config;
+
+        $valid->set_rules($rules->item('email'));
+        if ( ! $valid->run()) {
+            echo validation_errors();die();
+            return $this->PageEmail();
+        }
+
+        $this->emailAction();
+    }
+
+    private function PageEmail()
+    {
+        $userData = $this->session->userdata();
+        $this->load->view('layouts/wrapper', [
+            'content' => 'dashboard/set_email',
+            'active' => 'Pengaturan Email',
+            'title' => 'ALUMNI SD 1 - Admin',
+            'head' => 'Pengaturan',
+            'breadcrumb' => '<a href="'.site_url("0/pengaturan").'">Pengaturan</a> <li class="breadcrumb-item active"> Email</li>',
+            'userData' => $userData
+        ]);
+        
+    }
+
+    private function emailAction()
+    {
+        $data = [
+            "configvalue" => $this->input->post('email_sekolah')
+        ];
+        $params = [
+            "configname" => 'email_sekolah'
+        ];
+
+        if(!$this->pengaturan->emailUpdate($data, $params)) {
+            return direct("0/pengaturan/email", "Gagal ubah email");
+        }
+
+        return direct("0/pengaturan/email", "Berhasil ubah email");
     }
 
     private function isAdmin()
@@ -49,11 +94,11 @@ class Settings extends CI_Controller {
     private function pageResetPassword()
     {
         $userData = $this->session->userdata();
-        $data['content']  = 'dashboard/update_profile';
-        $data['active']   = 'profile';
+        $data['content']  = 'dashboard/ubah_password';
+        $data['active']   = 'Password';
         $data['title']    = 'ALUMNI SD 1 - Admin';
-        $data['head']       = 'Ubah Profile';
-        $data['breadcrumb'] = 'Ubah Profile';
+        $data['head']       = 'Password';
+        $data['breadcrumb'] = '<a href="'.site_url("0/pengaturan").'">Pengaturan</a> <li class="breadcrumb-item active"> Password</li>';
         $data['userData'] = $userData;
         $this->load->view("layouts/wrapper", $data);
     }
@@ -67,11 +112,11 @@ class Settings extends CI_Controller {
             "userId" => $this->session->id
         ];
 
-        if(!$this->profile->update($data, $params)) {
-            return direct("profile/reset-password", "Gagal reset password");
+        if(!$this->pengaturan->update($data, $params)) {
+            return direct("0/pengaturan/password", "Gagal reset password");
         }
 
-        return direct("profile/reset-password", "Berhasil reset password");
+        return direct("0/pengaturan/password", "Berhasil reset password");
     }
 
 }

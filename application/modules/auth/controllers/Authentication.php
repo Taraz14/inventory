@@ -118,6 +118,7 @@ class Authentication extends CI_Controller {
                 "address"  => $account->userAddress,
                 "roleId"   => $account->roleId,
                 "roleName" => $account->roleName,
+                "years"    => $account->userYears,
                 "isLoggin" => true
             ];
             // var_dump($sessi);die();

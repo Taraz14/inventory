@@ -8,34 +8,55 @@
       <li class="nav-item">
         <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
       </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('0/profile');?>" class="nav-link <?= ($sesi == 'profile') || ($sesi == 'update-profile')  ? 'active' : ''?>"><i class="fa fa-user-alt"></i> Profile</a>
-      </li>
-      <li class="nav-item d-none d-sm-inline-block">
-        <a href="<?= site_url('0/pengaturan');?>" class="nav-link <?= ($sesi == 'pengaturan')  ? 'active' : ''?>"><i class="fa fa-cog"></i> Pengaturan</a>
+    </ul>
+
+    <?php if($this->session->roleName == "Admin") {?>
+    <!-- Right navbar links -->
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-sign-out-alt"></i> 
+          Menu
+        </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="<?= site_url('0/profile');?>" class="dropdown-item"><i class="fa fa-user-alt"></i> Profile</a>
+          
+          <div class="dropdown-divider"></div>
+          
+          <a href="<?= site_url('0/pengaturan');?>" class="dropdown-item"><i class="fa fa-cog"></i> Pengaturan</a>
+
+          <div class="dropdown-divider"></div>
+          
+          <a href="<?= site_url('sign-out')?>" class="dropdown-item dropdown-footer" role="button"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Keluar</a>
+          
+        </div>
       </li>
     </ul>
 
-    <!-- SEARCH FORM -->
-    <form class="form-inline ml-3">
-      <div class="input-group input-group-sm">
-        <input class="form-control form-control-navbar" type="search" placeholder="Search" aria-label="Search">
-        <div class="input-group-append">
-          <button class="btn btn-navbar" type="submit">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-      </div>
-    </form>
+    <?php } if($this->session->roleName == "Alumni") {?>
 
     <!-- Right navbar links -->
     <ul class="navbar-nav ml-auto">
-      <!-- Messages Dropdown Menu -->
-      <li class="nav-item">
-        <a class="nav-link" href="<?= site_url('sign-out')?>" role="button">
-          <i class="fa fa-sign-out" aria-hidden="true"></i> Logout
+      <li class="nav-item dropdown">
+        <a class="nav-link" data-toggle="dropdown" href="#">
+          <i class="fa fa-sign-out-alt"></i> 
+          Menu
         </a>
+        <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+          <a href="<?= site_url('1/profile');?>" class="dropdown-item"><i class="fa fa-user-alt"></i> Profile</a>
+          
+          <div class="dropdown-divider"></div>
+          
+          <a href="<?= site_url('1/pengaturan');?>" class="dropdown-item"><i class="fa fa-cog"></i> Pengaturan</a>
+
+          <div class="dropdown-divider"></div>
+          
+          <a href="<?= site_url('sign-out')?>" class="dropdown-item dropdown-footer" role="button"><i class="fa fa-sign-out-alt" aria-hidden="true"></i> Keluar</a>
+          
+        </div>
       </li>
     </ul>
+
+    <?php } ?>
   </nav>
   <!-- /.navbar -->

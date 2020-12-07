@@ -7,17 +7,18 @@ class Alumni extends CI_Controller {
     {
         parent::__construct();
         $this->isAlumni();
-        // $this->load->model('dashboard_model', 'dashboard');
+        $this->load->model('alumni/dashboard_model', 'dashboard');
+        $this->load->model('alumni_model', 'alumni');
     }
 
     public function index()
     {
-        $data['content']  = 'dashboard';
-        $data['active']   = 'dashboard';
+        $data['content']  = 'alumni';
+        $data['active']   = 'alumni';
         $data['title']    = 'ALUMNI SD 1 - Alumni';
-        $data['head']       = 'Dashboard';
-        $data['breadcrumb'] = 'Dashboard';
-
+        $data['head']       = 'Data Alumni';
+        $data['breadcrumb'] = 'Data Alumni';
+        $data['alumni']     = $this->alumni->get();
         $this->load->view("layouts/wrapper", $data);
     }
 
@@ -29,6 +30,7 @@ class Alumni extends CI_Controller {
 
         redirect('sign-out','refresh');
     }
+
 }
 
 /* End of file Alumni.php */

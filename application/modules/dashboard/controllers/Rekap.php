@@ -7,7 +7,7 @@ class Rekap extends CI_Controller {
     {
         parent::__construct();
         $this->isAdmin();
-        $this->load->model('dashboard_model', 'dashboard');
+        $this->load->model('rekap_model', 'rekap');
     }
 
     public function index()
@@ -19,7 +19,8 @@ class Rekap extends CI_Controller {
             'title' => 'ALUMNI SD 1 - Admin',
             'head' => 'Rekap Data',
             'breadcrumb' => 'Rekap Data',
-            'userData' => $userData
+            'userData'    => $userData,
+            'years'     => $this->rekap->getYears(),    
         ]);
         
     }
@@ -31,6 +32,19 @@ class Rekap extends CI_Controller {
         }
 
         redirect('sign-out','refresh');
+    }
+
+    public function detailRekap($id){
+        $userData = $this->session->userdata();
+        $this->load->view('layouts/wrapper', [
+            'content' => 'dashboard/detail_rekap',
+            'active' => 'Rekap',
+            'title' => 'ALUMNI SD 1 - Admin',
+            'head' => 'Deail Rekap Alumni',
+            'breadcrumb' => '<a href="'.site_url("0/rekap").'">Rekap Data</a> <li class="breadcrumb-item active"> Detail Rekap Alumni</li>',
+            'userData'    => $userData,
+            'alumni'     => $this->rekap->get($id),    
+        ]);
     }
 
 }

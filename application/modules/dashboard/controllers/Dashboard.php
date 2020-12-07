@@ -19,6 +19,9 @@ class Dashboard extends CI_Controller {
         $data['head']       = 'Dashboard';
         $data['breadcrumb'] = 'Dashboard';
         $data['userData']    = $userData;
+        $data['countAlumni'] = $this->dashboard->countAlumni();
+        $data['countGambar'] = $this->dashboard->countGambar();
+        $data['countBerita'] = $this->dashboard->countBerita();
         $this->load->view("layouts/wrapper", $data);
     }
 

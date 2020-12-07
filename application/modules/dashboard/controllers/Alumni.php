@@ -55,6 +55,9 @@ class Alumni extends CI_Controller {
         $userDateB = explode('-', $this->input->post('userDateB'));
         $userDateB = $userDateB[2].'-'.$userDateB[1].'-'.$userDateB[0];
         // echo $userDateB;die();
+        $tahun = explode(' ', $this->input->post('year'));
+        $tahun = $tahun[1];
+        // echo $tahun;die();
         $data = [
             "genderId"      => $this->input->post('userGender'),
             "userNisn"      => $this->input->post('userNisn'),
@@ -67,8 +70,8 @@ class Alumni extends CI_Controller {
             "userAddress"    => $this->input->post('userAlamat'),
             "userBirthPlace"=> $this->input->post('userBP'),
             "userBirthDate" => $userDateB,
-            "userImage"     => 'nophoto.png',
-            "userYears"     => $this->input->post('year'),
+            "userImage"     => 'assets/dist/img/nophoto.png',
+            "userYears"     => $tahun,
             "createdAt"     => time(),
             "updateAt"      => time(),
         ];
@@ -145,6 +148,9 @@ class Alumni extends CI_Controller {
     public function actionUpdate(){
         $userDateB = explode('-', $this->input->post('userDateB'));
         $userDateB = $userDateB[2].'-'.$userDateB[1].'-'.$userDateB[0];
+        $tahun = explode(' ', $this->input->post('year'));
+        $tahun = $tahun[1];
+        // echo $tahun;die();
 
         $params = [
             "userId" => $this->input->post('userId')
@@ -159,7 +165,7 @@ class Alumni extends CI_Controller {
             "userAddress"    => $this->input->post('userAlamat'),
             "userBirthPlace"=> $this->input->post('userBP'),
             "userBirthDate" => $userDateB,
-            "userYears"     => $this->input->post('year'),
+            "userYears"     => $tahun,
         ];
         // var_dump($data);die();
         if(!$this->dashboard->update($data, $params)){

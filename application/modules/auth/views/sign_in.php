@@ -27,7 +27,7 @@
   <div class="card card-outline card-purple">
     
     <div class="card-header text-center">
-      <a href="<?= site_url();?>" class="h1"><img src="<?= base_url('assets/dist/img/logo.png')?>" style="width:35%"></a>
+      <a href="<?= site_url();?>" class="h1"><img src="<?= base_url('assets/dist/img/logo.svg')?>" style="width:35%"></a>
     </div>
     <div class="card-body">
       <!-- <p class="login-box-msg">SD 1 Kota Sorong</p> -->
@@ -64,9 +64,9 @@
         </div>
         <br/>
       <?= form_close();?>
-      <p class="mb-0">
-        <a href="register.html" class="text-center">Daftar akun alumni</a>
-      </p>
+      <!--<p class="mb-0">-->
+      <!--  <a href="register.html" class="text-center">Daftar akun alumni</a>-->
+      <!--</p>-->
     </div>
     <!-- /.card-body -->
   </div>

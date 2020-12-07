@@ -1,21 +1,24 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 
-class Mailer {
+class Mailer
+{
     protected $_ci;
     protected $email_pengirim = 'dimaz.taraz@gmail.com'; // Isikan dengan email pengirim
-    protected $nama_pengirim = 'Bonaventura Dimas P.'; // Isikan dengan nama pengirim
+    protected $nama_pengirim = 'Admin SD 1 Kota Sorong'; // Isikan dengan nama pengirim
     protected $password = 'gcih nzwu tzva uflz'; // Isikan dengan password email pengirim
-    public function __construct(){
+    public function __construct()
+    {
         $this->_ci = &get_instance(); // Set variabel _ci dengan Fungsi2-fungsi dari Codeigniter
-        require_once(APPPATH.'third_party/phpmailer/Exception.php');
-        require_once(APPPATH.'third_party/phpmailer/PHPMailer.php');
-        require_once(APPPATH.'third_party/phpmailer/SMTP.php');
+        require_once(APPPATH . 'third_party/phpmailer/Exception.php');
+        require_once(APPPATH . 'third_party/phpmailer/PHPMailer.php');
+        require_once(APPPATH . 'third_party/phpmailer/SMTP.php');
     }
-    public function send($data){
+    public function send($data)
+    {
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -32,14 +35,15 @@ class Mailer {
         $mail->Body = $data['content'];
         $mail->AddEmbeddedImage('image/logo.png', 'logo_mynotescode', 'logo.png'); // Aktifkan jika ingin menampilkan gambar dalam email
         $send = $mail->send();
-        if($send){ // Jika Email berhasil dikirim
-            $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim');
-        }else{ // Jika Email Gagal dikirim
-            $response = array('status'=>'Gagal', 'message'=>'Email gagal dikirim');
+        if ($send) { // Jika Email berhasil dikirim
+            $response = array('status' => 'Sukses', 'message' => 'Email berhasil dikirim');
+        } else { // Jika Email Gagal dikirim
+            $response = array('status' => 'Gagal', 'message' => 'Email gagal dikirim');
         }
         return $response;
     }
-    public function send_with_attachment($data){
+    public function send_with_attachment($data)
+    {
         $mail = new PHPMailer;
         $mail->isSMTP();
         $mail->Host = 'smtp.gmail.com';
@@ -55,16 +59,16 @@ class Mailer {
         $mail->Subject = $data['subjek'];
         $mail->Body = $data['content'];
         $mail->AddEmbeddedImage('image/logo.png', 'logo_mynotescode', 'logo.png'); // Aktifkan jika ingin menampilkan gambar dalam email
-        if($data['attachment']['size'] <= 25000000){ // Jika ukuran file <= 25 MB (25.000.000 bytes)
+        if ($data['attachment']['size'] <= 25000000) { // Jika ukuran file <= 25 MB (25.000.000 bytes)
             $mail->addAttachment($data['attachment']['tmp_name'], $data['attachment']['name']);
             $send = $mail->send();
-            if($send){ // Jika Email berhasil dikirim
-                $response = array('status'=>'Sukses', 'message'=>'Email berhasil dikirim');
-            }else{ // Jika Email Gagal dikirim
-                $response = array('status'=>'Gagal', 'message'=>'Email gagal dikirim');
+            if ($send) { // Jika Email berhasil dikirim
+                $response = array('status' => 'Sukses', 'message' => 'Email berhasil dikirim');
+            } else { // Jika Email Gagal dikirim
+                $response = array('status' => 'Gagal', 'message' => 'Email gagal dikirim');
             }
-        }else{ // Jika Ukuran file lebih dari 25 MB
-            $response = array('status'=>'Gagal', 'message'=>'Ukuran file attachment maksimal 25 MB');
+        } else { // Jika Ukuran file lebih dari 25 MB
+            $response = array('status' => 'Gagal', 'message' => 'Ukuran file attachment maksimal 25 MB');
         }
         return $response;
     }

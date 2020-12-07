@@ -202,3 +202,42 @@ $config['reset_password'] = [
         ]
     ]
 ];
+
+$config['email'] = [
+    [
+        'field'  => 'email_sekolah',
+        'label'  => 'Email',
+        'rules'  => 'trim|required|valid_email',
+        'errors' => [
+            'required'    => '* %s tidak boleh kosong',
+            'valid_email' => '* %s tidak valid.'
+        ]
+    ],
+];
+
+$config['koran'] = [
+    [
+        'field'  => 'judul',
+        'label'  => 'Judul berita',
+        'rules'  => 'trim|required',
+        'errors' => [
+            'required'    => '* %s tidak boleh kosong'
+        ]
+    ],
+    [
+        'field'  => 'slug',
+        'label'  => 'Slug',
+        'rules'  => 'trim|required',
+        'errors' => [
+            'required'    => '* %s tidak boleh kosong'
+        ]
+    ],
+    [
+        'field'  => 'berita',
+        'label'  => 'Isi berita',
+        'rules'  => 'trim|required',
+        'errors' => [
+            'required'    => '* %s tidak boleh kosong'
+        ]
+    ],
+];

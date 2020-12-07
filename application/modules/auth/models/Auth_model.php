@@ -7,7 +7,7 @@ class Auth_model extends CI_Model {
     {
         return $this->db
             ->select('u.*, r.*')
-            ->from("userRole ur")
+            ->from("userrole ur")
             ->join("user u","u.userId = ur.userId", "inner")
             ->join("role r","r.roleId = ur.roleId", "inner")
             ->where($params)
@@ -24,7 +24,7 @@ class Auth_model extends CI_Model {
 
     public function setRole($data)
     {
-        return $this->db->insert('userRole', $data);
+        return $this->db->insert('userrole', $data);
     }
 
 }

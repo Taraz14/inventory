@@ -2,6 +2,8 @@
 
     <!-- jQuery -->
     <script src="<?= base_url()?>assets/plugins/jquery/jquery.min.js"></script>
+    <!-- Popper -->
+    <script src="<?= base_url()?>assets/plugins/popper/umd/popper.min.js"></script>
     <!-- Bootstrap 4 -->
     <script src="<?= base_url()?>assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- Input Filter -->
@@ -30,6 +32,12 @@
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.print.min.js"></script>
     <script src="<?= base_url()?>assets/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
+    <!-- dropzonejs -->
+    <script src="<?= base_url()?>assets/plugins/dropzone/min/dropzone.min.js"></script>
+    <!-- Ekko Lightbox -->
+    <script src="<?= base_url()?>assets/plugins/ekko-lightbox/ekko-lightbox.min.js"></script>
+    <!-- Filterizr-->
+    <script src="<?= base_url()?>assets/plugins/filterizr/jquery.filterizr.min.js"></script>
     <!-- Summernote -->
     <script src="<?= base_url()?>assets/plugins/summernote/summernote-bs4.min.js"></script>
     <!-- AdminLTE App -->

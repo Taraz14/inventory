@@ -55,7 +55,7 @@
                             <td><?= $val->userAddress; ?></td>
                             <td><?= $val->userPhone; ?></td>
                             <td><?= $val->userEmail; ?></td>
-                            <td><?= $val->userYears == NULL ? "-" : date("M-Y", strtotime($val->userYears)); ?></td>
+                            <td><?= $val->userYears == NULL ? "-" : $val->userYears; ?></td>
                             <td>
                                 <button type="button" id="<?= $val->userId?>" class="btn btn-sm btn-default text-red deleteBtn"><i class="fa fa-trash"></i></button>
                                 <a href="<?= site_url('0/update-alumni/'.$val->userId)?>" class="btn btn-sm btn-default text-yellow"><i class="fa fa-pen"></i></a>
