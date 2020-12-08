@@ -242,3 +242,13 @@ $config['koran'] = [
         ]
     ],
 ];
+$config['galeri'] = [
+    [
+        'field'  => 'deskripsi',
+        'label'  => 'Deskripsi',
+        'rules'  => 'trim|required',
+        'errors' => [
+            'required'    => '* %s tidak boleh kosong'
+        ]
+    ],
+];

@@ -33,7 +33,8 @@ $route['0/delete-berita/(:any)'] = 'dashboard/Berita/deleteBerita/$1';
 
 //galeri admin
 $route['0/galeri'] = 'dashboard/Galeri';
-$route['0/upload'] = 'dashboard/Galeri/upload';
+$route['0/upload'] = 'dashboard/Galeri/create';
+$route['0/delete-foto/(:any)'] = 'dashboard/Galeri/delete/$1';
 
 //rekap admin
 $route['0/rekap'] = 'dashboard/Rekap';
